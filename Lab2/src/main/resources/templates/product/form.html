@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"><title>Product Form</title></head>
+<body>
+<form action="/product/save" method="post">
+    <input name="name" placeholder="Nhập tên sản phẩm">
+    <input name="price" placeholder="Nhập giá sản phẩm">
+    <button>Save</button>
+</form>
+<hr>
+
+<h4>Sản phẩm lấy từ form:</h4>
+<ul th:if="${#lists.isEmpty(productsFromForm) == false}">
+    <li th:each="item : ${productsFromForm}">
+        <span th:text="${item.name}"></span> - 
+        <span th:text="${item.price}"></span>
+    </li>
+</ul>
+
+<h4>Sản phẩm có sẵn:</h4>
+<ul>
+    <li th:each="item : ${availableProducts}">
+        <span th:text="${item.name}"></span> - 
+        <span th:text="${item.price}"></span>
+    </li>
+</ul>
+
+</body>
+</html>
